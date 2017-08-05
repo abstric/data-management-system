@@ -5,3 +5,5 @@
 *.bin
 *.bin
 *.lock
+*.bin
+*.lock
