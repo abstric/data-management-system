@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,9 +39,24 @@ public class LoginAndRegisterCtrl {
         return "loginandregister";
     }
 
+    /**
+     * error page
+     * @return
+     */
     @RequestMapping(value = "/error")
     public String error(){
         return "error";
+    }
+
+    /**
+     * main page
+     * @return
+     */
+    @RequestMapping(value = "/{register_username}/mainPage")
+    public String mainPage(@PathVariable("register_username") String username, Model model){
+        System.out.println("mainppppppp");
+        model.addAttribute("username",username);
+        return "main";
     }
 
     /**
@@ -49,7 +65,7 @@ public class LoginAndRegisterCtrl {
      * @param password
      * @return
      */
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(@RequestParam(value="login_username") String username,
                         @RequestParam(value="login_password") String password,
                         Model model){
@@ -72,7 +88,7 @@ public class LoginAndRegisterCtrl {
      * @param model
      * @return
      */
-    @RequestMapping(value="/register",method = RequestMethod.GET)
+    @RequestMapping(value="/register",method = RequestMethod.POST)
     public String register(@RequestParam(value="register_username") String username,
                            @RequestParam(value="register_password") String password,
                            @RequestParam(value="register_password_again") String password_again,

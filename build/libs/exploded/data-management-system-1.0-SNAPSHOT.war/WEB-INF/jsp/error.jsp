@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="panel-heading">
-    ${user }
+    sorry, ${user },your password is wrong!
 </div>
 </body>
 </html>

@@ -37,7 +37,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="login">
-                <form class="form_style" action="/loginAndResisterCtrl/login">
+                <form class="form_style" action="/loginAndResisterCtrl/login" method="post">
                     <div class="form-group">
                         <label for="login_username">username</label>
                         <input type="text" class="form-control" id="login_username" name="login_username" placeholder="login_username">
@@ -65,7 +65,7 @@
                 </form>
             </div>
             <div role="tabpanel" class="tab-pane" id="register">
-                <form class="form_style" action="/loginAndResisterCtrl/register">
+                <form class="form_style" action="/loginAndResisterCtrl/register" method="post">
                     <div class="form-group">
                         <label for="register_username">username</label>
                         <input type="text" class="form-control" id="register_username" name="register_username" placeholder="username">
