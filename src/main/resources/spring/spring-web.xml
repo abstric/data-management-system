@@ -32,9 +32,17 @@
 		 <property name="prefix" value="/WEB-INF/jsp/"/>
 		 <property name="suffix" value=".jsp"/>
 	 </bean>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"/>
+		<property name="maxUploadSize" value="54000000"/>
+		<property name="uploadTempDir" value="fileUploadAndDownload/temp"/>
+	</bean>
 	 
 	 <!-- 4.扫描web相关的Bean -->
 	 <context:component-scan base-package="com.sdu.www.dms.ctrl"/>
+
+
 
 
 </beans>

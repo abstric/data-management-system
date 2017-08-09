@@ -30,7 +30,6 @@
                         </button>
                         <a class="navbar-brand" href="http://gradms.sdu.edu.cn/login">
                             SDU
-                            <span class="sr-only">(current)</span>
                         </a>
                     </div>
 
@@ -46,12 +45,12 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">upload</a></li>
-                                    <li><a href="#">download</a></li>
+                                    <li><a href="/upAndDownLoadCtrl/uploadAndDownload">upload</a></li>
+                                    <li><a href="/upAndDownLoadCtrl/uploadAndDownload">download</a></li>
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-form navbar-left">
+                        <form class="navbar-form navbar-left" action="" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search">
                             </div>

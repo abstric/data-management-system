@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sdu.www.dms.dao.IUpAndDownLoadDao">
+
+    <insert id="fileUploadPath">
+        INSERT into sdu_sjjd_file_path (file_id,file_name,file_type,file_path,lrsj,lrr,file_size) VALUES (
+        #{fileId},#{fileName},#{fileType},#{filePath},#{lrsj},#{lrr},#{fileSize}
+        );
+    </insert>
+
+    <select id="fileExists" resultType="String">
+        SELECT file_id from sdu_sjjd_file_path where file_name=#{fileName} and file_type=#{fileType};
+    </select>
+    
+    <insert id="fileUploadOperateRecord">
+        INSERT INTO sdu_sjjd_file_operate_record (file_id,file_name,file_type,file_operate,
+        file_operate_time,file_operate_persion) values (
+        #{fileId},#{fileName},#{fileType},#{operateType},#{operateTime},#{operatePersion}
+        );
+    </insert>
+
+</mapper>
