@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/echarts/3.6.2/echarts.min.js"></script>
+    <link rel="stylesheet" href="/resource/css/main.css">
 </head>
 <body>
 <div class="container">
@@ -41,12 +43,12 @@
                             <li class="upAndDown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                    role="button" aria-haspopup="true" aria-expanded="false">
-                                    upAndDown
+                                    file operate
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/upAndDownLoadCtrl/uploadAndDownload">upload</a></li>
-                                    <li><a href="/upAndDownLoadCtrl/uploadAndDownload">download</a></li>
+                                    <li><a href="/upAndDownLoadCtrl/uploadAndDownload">upload and download</a></li>
+                                    <li><a href="*">file list</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -73,8 +75,55 @@
         </div>
     </div>
     <div class="row main-body">
-
+        <div class="col-xs-16 col-md-8">
+            <div class="jumbotron">
+                <h3>Document</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a>
+                    <a href="#" class="btn btn-default" role="button">Button</a>
+                </p>
+            </div>
+            <div class="jumbotron">
+                <h3>Images</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a>
+                    <a href="#" class="btn btn-default" role="button">Button</a>
+                </p>
+            </div>
+            <div class="jumbotron">
+                <h3>Others</h3>
+                <p>...</p>
+                <p><a href="#" class="btn btn-primary" role="button">Button</a>
+                    <a href="#" class="btn btn-default" role="button">Button</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-8 col-md-4">
+            <div class="jumbotron">
+                <h4>Upload charts</h4>
+                <a href="#" class="thumbnail">
+                    <img src="..." alt="...">
+                </a>
+            </div>
+            <div class="jumbotron">
+                <h4>Download charts</h4>
+                <a href="#" class="thumbnail">
+                    <img src="..." alt="...">
+                </a>
+            </div>
+            <div class="jumbotron">
+                <h4>Activity ranking</h4>
+                <a href="#" class="thumbnail">
+                    <img src="..." alt="...">
+                </a>
+            </div>
+            <div class="jumbotron">
+                <h4>File Size charts</h4>
+                <div id="fileSizeCharts" class="ecartsShow"></div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
+<script src="/resource/js/main.js"></script>
 </html>

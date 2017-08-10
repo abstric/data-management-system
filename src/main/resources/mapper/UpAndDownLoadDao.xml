@@ -15,11 +15,23 @@
         SELECT file_id from sdu_sjjd_file_path where file_name=#{fileName} and file_type=#{fileType};
     </select>
     
-    <insert id="fileUploadOperateRecord">
+    <insert id="fileOperateRecord">
         INSERT INTO sdu_sjjd_file_operate_record (file_id,file_name,file_type,file_operate,
         file_operate_time,file_operate_persion) values (
         #{fileId},#{fileName},#{fileType},#{operateType},#{operateTime},#{operatePersion}
         );
     </insert>
+
+    <select id="getFilePath" resultType="FilePath">
+        select file_id,file_name,file_type,file_path,lrsj,lrr,file_size,file_download_count
+        from sdu_sjjd_file_path where file_name=#{fileName}
+    </select>
+
+    <update id="setFileDownloadCount">
+        UPDATE sdu_sjjd_file_path set file_download_count=#{fileDownloadCount} where file_id=#{fileId};
+    </update>
+
+
+
 
 </mapper>

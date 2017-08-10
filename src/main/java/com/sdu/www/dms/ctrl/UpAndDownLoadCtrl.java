@@ -2,9 +2,14 @@ package com.sdu.www.dms.ctrl;
 
 import com.sdu.www.dms.dto.FileDto;
 import com.sdu.www.dms.service.IUpAndDownLoadSc;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
 
 import static com.sdu.www.dms.common.FileUploadUtil.checkFileFormat;
 
@@ -36,7 +42,7 @@ public class UpAndDownLoadCtrl {
 
     @RequestMapping(value = "/uploadAndDownload")
     public String upload(){
-        return "uploadanddownload";
+        return "fileoperate/uploadanddownload";
     }
 
     /**
@@ -96,9 +102,13 @@ public class UpAndDownLoadCtrl {
      */
     @RequestMapping(value="/{fileType}/fileList")
     public ModelAndView fileList(@PathVariable("fileType") String fileType) {
-        String filePath = request.getSession().getServletContext().getRealPath("/")
-                + fileType + File.separator;
-        ModelAndView mav = new ModelAndView("/fileList/list");
+        String filePath="";
+        if(!fileType.isEmpty()){
+            filePath = request.getSession().getServletContext().getRealPath("/")
+                    + fileType + File.separator;
+        }
+
+        ModelAndView mav = new ModelAndView("fileoperate/filelist");
         File uploadDest = new File(filePath);
         String[] fileNames = uploadDest.list();
         for (int i = 0; i < fileNames.length; i++) {
@@ -107,6 +117,27 @@ public class UpAndDownLoadCtrl {
             mav.addObject("fileName",fileNames[i]);
         }
         return mav;
+    }
+
+    /**
+     * 文件下载
+     * @param fileOutput
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "/fileDownload")
+    public ResponseEntity<byte[]> fileDownload(@RequestParam("fileOutput") String fileOutput) throws IOException {
+        String path="";
+        if(!fileOutput.isEmpty()){
+            path=upAndDownLoadSc.fileDownload(fileOutput);
+        }
+        File file=new File(path);
+        HttpHeaders headers = new HttpHeaders();
+        String fileName=new String(fileOutput.getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题
+        headers.setContentDispositionFormData("attachment", fileName);
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
+                headers, HttpStatus.CREATED);
     }
 
 }

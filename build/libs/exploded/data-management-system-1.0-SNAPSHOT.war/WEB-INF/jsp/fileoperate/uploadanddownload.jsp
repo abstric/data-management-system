@@ -17,11 +17,16 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="page-header">
+            <h1>File Upload and Download  <small>document images others</small></h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
-            <div id="fileUpload">
+            <div id="fileUpload" class="jumbotron">
                 <form action="/upAndDownLoadCtrl/fileUpload" method="post" enctype="multipart/form-data">
                     <div class="form-group" id="file-upload">
-                        <label for="fileInput">File input</label>
+                        <label for="fileInput">File upload</label>
                         <input type="file" id="fileInput" name="fileInput">
                         <p class="help-block">please choice your file ,and upload it!</p>
                     </div>
@@ -30,15 +35,16 @@
             </div>
         </div>
         <div class="col-md-6">
-            <%--<div id="fileDownload">
-                <form action="/upAndDownLoadCtrl/fileUpload" method="post" enctype="multipart/form-data">
+            <div id="fileDownload" class="jumbotron">
+                <form action="/upAndDownLoadCtrl/fileDownload" method="post" enctype="multipart/form-data">
                     <div class="form-group" id="file-download">
-                        <label for="fileOutput">File input</label>
-                        <input type="file" id="fileOutput">
-                        <p class="help-block">Example block-level help text here.</p>
+                        <label for="fileDown">File download</label><br>
+                        <input type="text" id="fileDown" name="fileOutput">
+                        <p class="help-block">please choice your file ,and download it!</p>
                     </div>
+                    <button type="submit" class="btn btn-default">DOWNLOAD</button>
                 </form>
-            </div>--%>
+            </div>
         </div>
     </div>
 </div>
